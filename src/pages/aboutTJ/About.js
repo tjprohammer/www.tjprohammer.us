@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { StyledButton, StyledRow } from '../home/Home';
 import { BackgroundImage, PageWrapper } from '../home/StyleHome';
 import TJRubyShootingPort from '../../images/TJRubyShootingPort.jpg';
-import { Row } from 'reactstrap';
 
 const ANIMATION_DURATION_S = 0.8;
 

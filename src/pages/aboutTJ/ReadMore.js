@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { GlassContainer, GlassContainerReadMe, TitleDescrip } from './StylesAbout';
-import AnimatedText from '../../components/Animation/AnimatedText';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import { GlassContainer, TitleDescrip } from './StylesAbout';
 import { Link } from 'react-router-dom';
 import { StyledButton } from '../home/Home';
 import { BackgroundImage, PageWrapper } from '../home/StyleHome';

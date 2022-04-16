@@ -5,11 +5,9 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { ModalContext } from '../context/ModalContext';
 import { useContext } from 'react';
 import { ColumnImg } from '../../pages/gallery/StylesGallery';
-import { ProductState } from '../context/ProductContext';
 
 export const Modal = () => {
     const { modalContent, handleModal, openModal } = useContext(ModalContext);
-    const {products} = ProductState()
 
     if (openModal) {
         return ReactDOM.createPortal(
