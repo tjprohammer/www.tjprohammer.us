@@ -1,0 +1,4 @@
+.env
+terraform.tfvars
+tjprohammer-admin-panel/*
+/portfolio/node_modules

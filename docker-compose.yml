@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  
+
+  client:
+    container_name: tjprohammer-us-client
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    restart: on-failure
+    networks:
+      - tjprohammer-network
+
+    ports:
+      - "3000:3000"
+
+  api:
+    container_name: tjprohammer-us-api
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      args:
+        - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+        - MONGO_URI=${MONGO_URI}
+    restart: on-failure
+    networks:
+      - tjprohammer-network
+    ports:
+      - "5005:5005"
+    environment:
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - MONGO_URI=${MONGO_URI}
+    env_file:
+      - ./.env
+
+  nginx:
+    container_name: tjprohammer-us-nginx
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    restart: always
+    depends_on:
+      - client
+      - api
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./client/build:/usr/share/nginx/html
+    networks:
+      - tjprohammer-network
+
+networks:
+  tjprohammer-network:
+    driver: bridge
